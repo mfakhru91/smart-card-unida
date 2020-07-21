@@ -1,0 +1,29 @@
+{
+  "name": "createsimpleapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "file-system": "^2.2.2",
+    "moment": "^2.27.0",
+    "package_name": "^1.0.2",
+    "path": "^0.12.7",
+    "promise": "^8.1.0",
+    "randomcolor": "^0.6.2",
+    "socket.io": "^2.3.0",
+    "superagent": "^5.3.1",
+    "superagent-promise": "^1.1.0",
+    "uuid": "^8.2.0",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
