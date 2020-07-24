@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SIAKAD UNIDA Gontor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img src="/images/img-01.png" alt="IMG">
+			</div>
+
+			<form class="contact1-form validate-form" method="get" action="/rfid/api/input">
+				<span class="contact1-form-title">
+					SMART CARD
+				</span>
+				<span class="contact1-form-title">
+					Input Data 
+				</span>
+
+				<div class="wrap-input1 validate-input" data-validate = "NIM Dibutuhkan">
+					<input class="input1" type="text" name="nim" id="nim" placeholder="NIM">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "href_id Dibutuhkan">
+					<input class="input1" type="text" id="rfid" name="rfid" placeholder="RFID">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="container-contact1-form-btn">
+					<button class="contact1-form-btn">
+						<span>
+							Submit
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="../socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      	$(document).ready(function(){
+      		var socket = io.connect();
+		  	socket.on('message',function(message){
+          		$('#rfid').val(message);
+        	});
+        	$('#nim').autocomplete({
+			      minLength:1,
+			      // select:function(event, ui){
+			       
+			      //   $('#nim').val(ui.item.id);
+			                
+			      // },
+			      
+			      // focus: function (event, ui) {
+			      //   $('#nim').val(ui.item.id);
+			       
+			      // },
+			      source:function(req, res) {
+			        $.ajax({
+			        		headers: { 'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InJpemt5bXBwbCIsImNsaWVudFNlY3JldCI6ImViY0psWUx1MGciLCJpYXQiOjE1ODMxMjA4OTN9.tsGIyqeCMTkpeG2-U0td0EiUBlTbvn1w_DSerj9kVuk' },
+			                url: "http://api.unida.gontor.ac.id:1926/m/cari?key=balqis",
+			                dataType: "json",
+			                data: {
+			                    term: req.term,
+			                    
+			                },
+			                success: function (data) {
+			                    res(data);
+			                }
+			            })
+			        },
+			       
+			  });
+		});
+    </script>
+</body>
+</html>

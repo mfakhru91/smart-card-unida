@@ -12,7 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "file-system": "^2.2.2",
+    "hbs": "^4.1.1",
     "moment": "^2.27.0",
+    "mysql": "^2.18.1",
     "package_name": "^1.0.2",
     "path": "^0.12.7",
     "promise": "^8.1.0",
