@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 const path = require("path")
+var PORT = process.env.PORT || 5000
 var http =  require('http').createServer(app);
 var io = require('socket.io').listen(http);
 app.use(express.static("public"))
@@ -26,6 +27,6 @@ app.use('/p', permessionRoutes)
 
 exports.http = http
 
-http.listen(3000, ()=>{
-	console.log('listening on *:3000');
+http.listen(PORT, ()=>{
+	console.log('listening on *:'+PORT);
 })
