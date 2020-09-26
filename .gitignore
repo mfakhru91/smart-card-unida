@@ -1,5 +1,5 @@
 node_modules
 package-lock.json
-config/db.json
-config/svc.json
-config/token.json
+db.json
+svc.json
+token.json
