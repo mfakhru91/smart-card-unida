@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 exports.putRfid = ( req, res, next ) => {
 	let data = {nim: req.query.nim, rfid: req.query.rfid}
   if (req.query.nim && req.query.rfid) {
-      var update = agent.put(svcConfig.rfid+'/m/rfid/update')
+      var update = agent.put(svcConfig.+'/m/rfid/update')
       .set('Content-Type','application/x-www-form-urlencoded')
       .set('x-access-token',tok.token)
       .buffer()

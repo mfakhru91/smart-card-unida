@@ -1,0 +1,10 @@
+{
+	"host": "database_host",
+	"port": 3306,
+	"database": "database_name",
+	"user": "database_username",
+	"password": "database_password",
+	"connectionLimit": 10,
+	"dateStrings": "true"
+	
+}
