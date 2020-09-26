@@ -18,10 +18,10 @@ app.get('/api/pushrfid', (req, res)=> {
   res.end();
 });
 
-var rfidRoutes = require('./app/routes/inputRfid.routes')
+// var rfidRoutes = require('./app/routes/inputRfid.routes')
 var permessionRoutes = require('./app/routes/permission')
 
-app.use('/rfid', rfidRoutes)
+// app.use('/rfid', rfidRoutes)
 app.use('/smcard', permessionRoutes)
 
 exports.http = http
