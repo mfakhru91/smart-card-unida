@@ -4,6 +4,7 @@ var router = express.Router()
 var rfidInputController = require('../controllers/rfidController')
 
 router.get('/api/input',rfidInputController.putRfid)
+router.get('/api/success',rfidInputController.success)
 // router.get('/input/data',rfidInputController.getViewRfid)
 // router.get('/api/pushrfid',rfidInputController.pushRfid)
 module.exports = router
