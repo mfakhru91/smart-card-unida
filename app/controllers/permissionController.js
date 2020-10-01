@@ -8,7 +8,12 @@ app.use(bodyParser.json());
 
 exports.keluar = (req, res, next) => {
 	var rfid =  req.query.rfid
-	var date = req.query.date
+	let ts = Date.now()
+	let date_ob = new Date(ts)
+	let date = date_ob.getDate()
+	let month = date_ob.getMonth()
+	let year = date_ob.getFullYear()
+	var datefull =  year+'-'+month+'-'+date
 	console.log(rfid+date);
 	var sql = "SELECT * FROM simak_mastermahasiswa WHERE rfid = ?"
 	var rfidData = new Promise(function(resolve, reject ) {
@@ -33,7 +38,7 @@ exports.keluar = (req, res, next) => {
 
 	rfidData.then((nim,reject) => {
 		var sql = "INSERT INTO erp_izin_harian (nim, waktu, status_izin) VALUES (?,?,'2')"
-		db.query(sql,[nim,date],function (err, results) {
+		db.query(sql,[nim,datefull],function (err, results) {
 			if (err){
 				console.log(err)
 				reject(err)
@@ -54,7 +59,12 @@ exports.keluar = (req, res, next) => {
 
 exports.masuk = (req, res, next) => {
 	var rfid =  req.query.rfid
-	var date = req.query.date
+	let ts = Date.now()
+	let date_ob = new Date(ts)
+	let date = date_ob.getDate()
+	let month = date_ob.getMonth()
+	let year = date_ob.getFullYear()
+	var datefull =  year+'-'+month+'-'+date
 	var sql = "SELECT * FROM simak_mastermahasiswa WHERE rfid = ?"
 	var rfidData = new Promise(function(resolve, reject ) {
 		db.query(sql,rfid,function(err, results){
@@ -76,8 +86,8 @@ exports.masuk = (req, res, next) => {
 		})
 	})
 	rfidData.then((nim,reject) => {
-		var sql = "UPDATE erp_izin_harian SET status_izin = 1 WHERE nim=?"
-		db.query(sql,nim,function (err, results) {
+		var sql = "UPDATE erp_izin_harian SET status_izin = 1,waktu=? WHERE nim=?"
+		db.query(sql,[datefull,nim],function (err, results) {
 			if (err){
 				console.log(err)
 				reject(err)
