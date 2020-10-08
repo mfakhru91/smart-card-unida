@@ -47,6 +47,9 @@
 									<div class="cell">
 										Semester
 									</div>
+									<div class="cell">
+										Waktu
+									</div>
 								</div>
 		
 								<div class="row">
@@ -61,6 +64,9 @@
 									</div>
 									<div class="cell" data-title="Semester">
 										<div id="semester"></div>
+									</div>
+									<div class="cell" data-title="Semester">
+										<div id="waktu"></div>
 									</div>
 								</div>
 							</div>
@@ -90,6 +96,7 @@
 	                	$("#nama_mahasiswa").text(data[0].nama_mahasiswa);
 	                	$("#nama_prodi").text(data[0].nama_prodi);
 	                	$("#semester").text(data[0].semester);
+	                	$("#waktu").text(data[0].waktu);
 	                    Swal.fire({
 						  icon: 'success',
   						  title: 'Permission has been confirmed',
