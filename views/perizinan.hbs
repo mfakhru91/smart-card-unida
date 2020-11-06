@@ -27,7 +27,6 @@
 				<span class="contact1-form-title">
 					Konfirmasi Data
 				</span>
-				<img src="/images/pngwing.com.png" alt="" class="gambar-sidik" id="sidik">
 			</form>
 			<div class="limiter">
 				<div class="container-table100">
@@ -98,12 +97,6 @@
 						$("#nama_prodi").text(data[0].nama_prodi);
 						$("#semester").text(data[0].semester);
 						$("#waktu").text(data[0].waktu);
-						Swal.fire({
-							icon: 'success',
-							title: 'Permission has been confirmed',
-							showConfirmButton: false,
-							timer: 1500
-						})
 					}
 				});
 			}
@@ -112,8 +105,6 @@
 			setInterval(function(){
 				loadlink()
 			},1000)
-			$("#sidik").click(function(){
-			})
 	    });
 	</script>
 </body>
