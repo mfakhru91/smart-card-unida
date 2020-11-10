@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var db = require('../db_config')
 var Promise = require('promise');
+var agent = require('superagent-promise')(require('superagent'), Promise);
 var moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
