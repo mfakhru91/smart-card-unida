@@ -92,10 +92,10 @@
 					success:function(data)
 					{
 						console.log(data);
-						$("#nim").text(data[0].profil.nim_mhs);
-						$("#nama_mahasiswa").text(data[0].nama_mahasiswa);
-						$("#nama_prodi").text(data[0].nama_prodi);
-						$("#semester").text(data[0].semester);
+						$("#nim").text(data[0].profil[0].nim_mhs);
+						$("#nama_mahasiswa").text(data[0].profil[0].nama_mahasiswa);
+						$("#nama_prodi").text(data[0].profil[0].nama_prodi);
+						$("#semester").text(data[0].profil[0].semester);
 						$("#waktu").text(data[0].waktu);
 						$("#imgmhs").html('<img width="200px" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data[0].nim+'" alt="IMG">')
 					}
