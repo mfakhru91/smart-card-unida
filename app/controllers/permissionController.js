@@ -3,7 +3,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var db = require('../db_config')
 var Promise = require('promise');
+var agent = require('superagent-promise')(require('superagent'), Promise);
 var moment = require('moment');
+const tok = require('../../config/token.json')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -89,13 +91,31 @@ exports.masuk = (req, res, next) => {
 }
 exports.getData = ( req, res,  next )=> {
 	var getDataKeluar = new Promise((resolve,reject)=>{
-		var sql=" SELECT a.created_at,a.waktu,b.nim_mhs as 'nim',b.nama_mahasiswa,b.semester,c.nama_prodi FROM  erp_izin_harian a JOIN simak_mastermahasiswa b ON a.nim = b.nim_mhs JOIN simak_masterprogramstudi c ON b.kode_prodi = c.kode_prodi WHERE a.status_izin = 2 ORDER BY a.created_at DESC LIMIT 1"
+		var sql=" SELECT a.created_at,a.waktu,b.nim_mhs as 'nim',b.nama_mahasiswa,b.semester FROM  erp_izin_harian a JOIN simak_mastermahasiswa b ON a.nim = b.nim_mhs WHERE a.status_izin = 2 ORDER BY a.created_at DESC LIMIT 1"
 		db.query(sql,function(err,result) {
 			if (err){
 				console.log(err)
 				reject(err)
 			}
-			resolve(result)
+			agent.get('http://api.unida.gontor.ac.id:1926/m/profil/nim')
+			.set('Content-Type','application/x-www-form-urlencoded')
+      		.set('x-access-token',tok.token)
+			.query({
+				nim: result.nim
+			})
+			.end()
+			.catch(err => {
+				reject(err)
+			})
+			.then(sres => {
+				var waktu = result.waktu
+				var hasil= {
+					'waktu':waktu,
+					'profil':sres[0]
+				}
+				console.log(hasil)
+				resolve(hasil)
+			});
 		})
 	})
 	getDataKeluar.then(data =>{
