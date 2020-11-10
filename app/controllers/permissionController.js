@@ -112,7 +112,7 @@ exports.getData = ( req, res,  next )=> {
 				var waktu = result[0].waktu
 				var hasil= {
 					'waktu':waktu,
-					'profil':sres[0]
+					'profil':sres
 				}
 				console.log(hasil)
 				resolve(hasil)
