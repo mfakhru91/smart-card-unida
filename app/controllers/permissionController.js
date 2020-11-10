@@ -3,17 +3,13 @@ var app = express();
 var bodyParser = require('body-parser');
 var db = require('../db_config')
 var Promise = require('promise');
+var moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 exports.keluar = (req, res, next) => {
 	var rfid =  req.query.rfid
-	let ts = Date.now()
-	let date_ob = new Date(ts)
-	let date = date_ob.getDate()
-	let month = date_ob.getMonth()
-	let year = date_ob.getFullYear()
-	var datefull =  year+'-'+month+'-'+date
+	var datetime = moment().format('YYYY-MM-DD HH:mm:ss')
 	console.log(rfid+date);
 	var sql = "SELECT * FROM simak_mastermahasiswa WHERE rfid = ?"
 	var rfidData = new Promise(function(resolve, reject ) {
@@ -38,7 +34,7 @@ exports.keluar = (req, res, next) => {
 
 	rfidData.then((nim,reject) => {
 		var sql = "INSERT INTO erp_izin_harian (nim, waktu, status_izin) VALUES (?,?,'2')"
-		db.query(sql,[nim,datefull],function (err, results) {
+		db.query(sql,[nim,datetime],function (err, results) {
 			if (err){
 				console.log(err)
 				reject(err)
@@ -54,7 +50,7 @@ exports.keluar = (req, res, next) => {
 		res.json(err)
 		res.end()
 	})
-	
+
 }
 
 exports.masuk = (req, res, next) => {
@@ -91,7 +87,7 @@ exports.masuk = (req, res, next) => {
 			if (err){
 				console.log(err)
 				reject(err)
-			}	
+			}
 			data = results[0]
 			res.json({
 				"status": 200,
