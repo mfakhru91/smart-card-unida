@@ -100,7 +100,7 @@ exports.masuk = (req, res, next) => {
 }
 exports.getData = ( req, res,  next )=> {
 	var getDataKeluar = new Promise((resolve,reject)=>{
-		var sql=" SELECT a.created_at,a.waktu,b.nim_mhs as 'nim',b.nama_mahasiswa,b.semester FROM  erp_izin_harian a JOIN simak_mastermahasiswa b ON a.nim = b.nim_mhs WHERE a.status_izin = 2 ORDER BY a.created_at DESC LIMIT 1"
+		var sql=" SELECT a.created_at,a.waktu_keluar as 'waktu',b.nim_mhs as 'nim',b.nama_mahasiswa,b.semester FROM  erp_izin_harian a JOIN simak_mastermahasiswa b ON a.nim = b.nim_mhs WHERE a.status_izin = 2 ORDER BY a.created_at DESC LIMIT 1"
 		db.query(sql,function(err,result) {
 			if (err){
 				console.log(err)
