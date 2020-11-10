@@ -101,14 +101,15 @@ exports.getData = ( req, res,  next )=> {
 			.set('Content-Type','application/x-www-form-urlencoded')
       		.set('x-access-token',tok.token)
 			.query({
-				nim: result.nim
+				nim: result[0].nim
 			})
 			.end()
 			.catch(err => {
+				console.log(err)
 				reject(err)
 			})
 			.then(sres => {
-				var waktu = result.waktu
+				var waktu = result[0].waktu
 				var hasil= {
 					'waktu':waktu,
 					'profil':sres[0]
