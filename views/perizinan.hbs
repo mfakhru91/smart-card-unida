@@ -42,7 +42,7 @@
                             <h3> : </h3>
                         </td>
                         <td>
-                            <h3 class="semester"></h3>
+                            <h3 id="semester"></h3>
                         </td>
                     </tr>
                     <tr>
@@ -80,7 +80,7 @@
 						$("#nama_prodi").text(data.profil.nama_prodi);
 						$("#semester").text(data.profil.semester);
 						$("#waktu").text(data.waktu);
-						$("#imgmhs").html('<img width="200px" class="img-fluid img-mhs" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data.profil.nim_mhs+'" alt="IMG">')
+						$("#imgmhs").html('<img width="200px" class="img-fluid" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data.profil.nim_mhs+'" alt="IMG">')
 					}
 				});
 			}
