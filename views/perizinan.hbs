@@ -56,6 +56,17 @@
                             <h3 id="waktu"></h3>
                         </td>
                     </tr>
+					<tr>
+                        <td>
+                            <h3>ASRAMA</h3>
+                        </td>
+                        <td>
+                            <h3> : </h3>
+                        </td>
+                        <td>
+                            <h3 id="asrama"></h3>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -79,8 +90,9 @@
 						$("#nama_mahasiswa").text(data.profil.nama_mahasiswa);
 						$("#nama_prodi").text(data.profil.nama_prodi);
 						$("#semester").text(data.profil.semester);
+						$("#asrama").text(data.profil.asrama+'('+data.profil.kamar+')');
 						$("#waktu").text(data.waktu);
-						$("#imgmhs").html('<img width="200px" class="img-fluid" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data.profil.nim_mhs+'" alt="IMG">')
+						$("#imgmhs").html('<img class="img-fluid img-mhs" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data.profil.nim_mhs+'" alt="IMG">')
 					}
 				});
 			}
