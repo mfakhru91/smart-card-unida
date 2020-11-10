@@ -46,7 +46,7 @@ function set_izin(rfid,status,cb) {
 			}
 			var hasil = {
 				"status": 200,
-				"message":"anda berhasil "+status,
+				"message":"anda berhasil "+ status,
 			}
 			cb (null,hasil)
 		})
@@ -84,6 +84,26 @@ exports.masuk = (req, res, next) => {
 		}
 		res.json(hasil)
 		console.log(hasil)
+		res.end()
+	})
+}
+exports.getData = ( req, res,  next )=> {
+	var getDataKeluar = new Promise((resolve,reject)=>{
+		var sql=" SELECT a.created_at,a.waktu,b.nim_mhs as 'nim',b.nama_mahasiswa,b.semester,c.nama_prodi FROM  erp_izin_harian a JOIN simak_mastermahasiswa b ON a.nim = b.nim_mhs JOIN simak_masterprogramstudi c ON b.kode_prodi = c.kode_prodi WHERE a.status_izin = 2 ORDER BY a.created_at DESC LIMIT 1"
+		db.query(sql,function(err,result) {
+			if (err){
+				console.log(err)
+				reject(err)
+			}
+			resolve(result)
+		})
+	})
+	getDataKeluar.then(data =>{
+		res.json(data)
+	})
+	getDataKeluar.catch(err =>{
+		console.log(err)
+		res.json(err)
 		res.end()
 	})
 }
