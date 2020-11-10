@@ -5,6 +5,7 @@ var db = require('../db_config')
 var Promise = require('promise');
 var agent = require('superagent-promise')(require('superagent'), Promise);
 var moment = require('moment');
+const tok = require('../../config/token.json')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
