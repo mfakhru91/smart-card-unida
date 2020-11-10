@@ -72,7 +72,7 @@
 					</div>
 				</div>
 			</div>
-			<img class="gambar" src="/images/img01.jpg" alt="IMG">
+			<div id="imgmhs"></div>
 		</div>
 
 
@@ -97,6 +97,7 @@
 						$("#nama_prodi").text(data[0].nama_prodi);
 						$("#semester").text(data[0].semester);
 						$("#waktu").text(data[0].waktu);
+						$("#imgmhs").html('<img class="gambar" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data[0].nim+'" alt="IMG">')
 					}
 				});
 			}
