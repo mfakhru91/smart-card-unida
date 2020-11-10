@@ -81,7 +81,7 @@ exports.masuk = (req, res, next) => {
 	})
 	rfidData.then((nim,reject) => {
 		var sql = "UPDATE erp_izin_harian SET status_izin = 1,waktu_masuk=? WHERE nim=? and waktu_masuk is NULL"
-		db.query(sql,[datefull,nim],function (err, results) {
+		db.query(sql,[datetime,nim],function (err, results) {
 			if (err){
 				console.log(err)
 				reject(err)
