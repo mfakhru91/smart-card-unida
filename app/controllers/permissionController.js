@@ -114,7 +114,6 @@ exports.getData = ( req, res,  next )=> {
 					'waktu':waktu,
 					'profil':sres.body.values[0]
 				}
-				console.log(hasil)
 				resolve(hasil)
 			});
 		})
