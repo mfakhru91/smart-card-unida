@@ -43,6 +43,10 @@ body{
     font-weight: bold;
     font-size: 35pt;
 }
+.m-name{
+    font-weight: bold;
+    font-size: 20pt;
+}
 .content::before{
     content: "";
     background-color:#F9B301;
@@ -78,4 +82,30 @@ body{
     right: 0px;
     position: absolute;
     background-color: #F9B301 ;
+}
+.m-profile{
+    display: none;
+}
+@media screen and (max-width: 360px) {
+    body{
+        padding-top: 0px;
+    }
+    .img-mhs{
+        display: none;
+    }
+    .content{
+        width: 100%;
+    }
+    .content::before{
+        display: none;
+    }
+    .profile{
+        padding: 10px 0px 0px 10px;
+    }
+    .biodata{
+        display: none;
+    }
+    .m-profile{
+        display: block;
+    }
 }
