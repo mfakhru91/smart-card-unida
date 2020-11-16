@@ -10,10 +10,71 @@
 </head>
 <body>
     <div class="content">
+         <div class="menu">
+            <ul>
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li>
+                    <a href="/rfid/">Input-Rfid</a>
+                </li>
+            </ul>
+        </div>
         <div class="profile">
 			<div id="imgmhs">
 
 			</div>
+            <div class="m-profile">
+                <div style="text-align: center;">
+                    <img height="200px" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim=3820176110344" alt="IMG">
+                </div>
+                <h1 class="m-name">Muhammad Khoironi Subagio</h1>
+                <table>
+                    <tr>
+                        <td>NIM</td>
+                        <td>:</td>
+                        <td h3 id="m_nim"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            PROGRAM STUDI
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td id="m_nama_prodi"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            SEMESTER
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td id="m_semester">
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            ASRAMA
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td id="m_asrama"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            WAKTU
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td id="m_waktu">
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div class="biodata">
                 <h1 class="name" id="nama_mahasiswa"></h1>
                 <hr>
@@ -93,6 +154,13 @@
 						$("#asrama").text(data.profil.asrama+' ('+data.profil.kamar+')');
 						$("#waktu").text(data.waktu);
 						$("#imgmhs").html('<img class="img-fluid img-mhs" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data.profil.nim_mhs+'" alt="IMG">')
+                        $("#m_nim").text(data.profil.nim_mhs);
+						$("#m_nama_mahasiswa").text(data.profil.nama_mahasiswa);
+						$("#m_nama_prodi").text(data.profil.nama_prodi);
+						$("#m_semester").text(data.profil.semester);
+						$("#m_asrama").text(data.profil.asrama+' ('+data.profil.kamar+')');
+						$("#m_waktu").text(data.waktu);
+						$("#m_imgmhs").html('<img class="img-fluid img-mhs" src="https://siakad.unida.gontor.ac.id/simak-mastermahasiswa/get-foto?nim='+data.profil.nim_mhs+'" alt="IMG">')
 					}
 				});
 			}
