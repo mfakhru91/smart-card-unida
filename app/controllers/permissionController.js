@@ -41,10 +41,6 @@ exports.keluar = (req, res, next) => {
 				console.log(err)
 				reject(err)
 			}
-			res.json({
-				"status": 200,
-				"message":"anda berhasil keluar",
-			})
 		})
 	})
 	rfidData.catch(err => {

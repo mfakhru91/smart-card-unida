@@ -2,9 +2,11 @@ var express = require('express')
 var router = express.Router()
 
 var rfidInputController = require('../controllers/rfidController')
+const { route } = require('./permission')
 
-// router.get('/api/input',rfidInputController.putRfid)
-// router.get('/api/success',rfidInputController.success)
-// // router.get('/input/data',rfidInputController.getViewRfid)
-// // router.get('/api/pushrfid',rfidInputController.pushRfid)
+router.get('/',rfidInputController.index)
+router.get('/api/input/db',rfidInputController.iputRfid)
+router.get('/api/get/db',rfidInputController.apiGet)
+router.get('/input/rfid',rfidInputController.store)
+router.get('/get/rfid',rfidInputController.apiStrore)
 module.exports = router
