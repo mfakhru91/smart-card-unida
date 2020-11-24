@@ -6,6 +6,8 @@ var Promise = require('promise');
 var agent = require('superagent-promise')(require('superagent'), Promise);
 var moment = require('moment');
 const tok = require('../../config/token.json');
+const svcConfig = require('../../config/svc.json')
+const secretConfig = require('../../config/token.json')
 const { reject } = require('promise');
 const { resolve } = require('path');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -86,6 +88,7 @@ exports.store = (req, res) => {
         resolve(data)
     })
     inputRfid.then((data)=>{
+        console.log(svcConfig.rfid);
         var update = agent.put(svcConfig.rfid+'/m/rfid/update')
             .set('Content-Type','application/x-www-form-urlencoded')
             .set('x-access-token',secretConfig.token)
@@ -99,7 +102,7 @@ exports.store = (req, res) => {
                     "code":200,
                     "message":"data behasil dimasukan",
                     "data":data
-                })
+                })  
             });
     })
     inputRfid.catch(err =>{

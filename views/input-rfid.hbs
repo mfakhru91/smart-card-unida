@@ -78,6 +78,7 @@
             $('#daftar').click(function(){
                 var rfid = $('#datarfid1').val()
                 var nim = $('#nimMahasiswa').val()
+                console.log('data input');
                 $.ajax({
 	            	url:"/rfid/input/rfid?nim="+nim+"&rfid="+rfid,
                     type:"GET",
