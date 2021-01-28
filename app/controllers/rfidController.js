@@ -88,7 +88,6 @@ exports.store = (req, res) => {
         resolve(data)
     })
     inputRfid.then((data)=>{
-        console.log(svcConfig.rfid);
         var update = agent.put(svcConfig.rfid+'/m/rfid/update')
             .set('Content-Type','application/x-www-form-urlencoded')
             .set('x-access-token',secretConfig.token)
