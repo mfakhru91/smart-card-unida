@@ -31,3 +31,10 @@ $(document).bind("keyup.autocomplete",function(){
     }); 
 });
 </code>
+
+  
+**API Path**  
+URL = /m/cari  
+METHOD = GET  
+param = key  
+key bisa NIM atau Nama Mahasiswa  
